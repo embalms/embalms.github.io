@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>点名器</title>
+		<style>
+			.main{
+				width: 500px;
+				height: 300px;
+				background-color: blue;
+				margin: 200px auto;
+			}
+			#box{
+				text-align: center;
+				width: 400px;
+				height: 50px;
+				margin: 0 auto;
+				padding-top: 50px;
+				color:burlywood;
+				font-size: 40px;
+			}
+			#bt{
+				width: 100px;
+				height: 30px;
+				margin: 100px auto;
+				text-align: center;
+				border: 1px green solid;
+				border-radius: 5px;
+				background-color: green;
+				color: aliceblue;
+				font-weight: bolder;
+				padding-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div id="box">大家准备好了么？</div>
+			<div id="bt" onclick="doit()">开始点名</div>
+		</div>
+		<script>
+			var namelist=["111","222","333","444","555","666"];
+			var mytime=null;
+			function doit(){
+				var bt=window.document.getElementById("bt");
+				if(mytime==null){
+					bt.innerHTML="停止点名";
+					show();
+				}
+				else{
+					bt.innerHTML="开始点名";
+					clearTimeout(mytime);
+					mytime=null;
+				}	
+			}
+			function show(){
+				var box=window.document.getElementById("box");
+				var num=Math.floor(Math.random()*100000)%namelist.length;
+				box.innerHTML=namelist[num];
+				mytime=setTimeout("show()",100);
+			}
+		</script>
+		
+	</body>
+	
+</html>
